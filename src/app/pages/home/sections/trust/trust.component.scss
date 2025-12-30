@@ -1,0 +1,127 @@
+.trust {
+  position: relative;
+  background: #05080f;
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+/* subtle grid continuation */
+.trust::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(34, 211, 238, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 75%);
+}
+
+.trust-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+}
+
+/* ================= LEFT ================= */
+
+.trust-content .eyebrow {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #22d3ee;
+  opacity: 0.85;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.trust-content .title {
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: 600;
+  line-height: 1.15;
+  color: #e5f4ff;
+  margin-bottom: 20px;
+}
+
+.trust-content .title span {
+  background: linear-gradient(90deg, #22d3ee, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.trust-content .desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #94a3b8;
+  max-width: 520px;
+  margin-bottom: 32px;
+}
+
+/* POINTS */
+
+.trust-points {
+  display: grid;
+  gap: 14px;
+}
+
+.point {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.point .dot {
+  width: 6px;
+  height: 6px;
+  background: #22d3ee;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
+}
+
+/* ================= RIGHT ================= */
+
+.trust-cards {
+  display: grid;
+  gap: 18px;
+}
+
+.card {
+  padding: 22px;
+  background: rgba(2, 6, 23, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 8px;
+
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(34, 211, 238, 0.5);
+}
+
+.card h3 {
+  font-size: 16px;
+  color: #e5f4ff;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #94a3b8;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .trust-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}

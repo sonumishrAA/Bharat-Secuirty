@@ -1,0 +1,68 @@
+@if (study(); as s) {
+<div class="cs-detail-page">
+    <!-- HERO -->
+    <header class="hero" [class.no-img]="!s.image">
+        <!-- Background Image or Gradient -->
+        @if (s.image) {
+        <div class="hero-bg" [style.backgroundImage]="'url(' + s.image + ')'"></div>
+        }
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-content">
+            <a routerLink="/case-studies" class="back-link">
+                <span class="arrow">‹</span> Back to Case Studies
+            </a>
+
+            <div class="meta-badges">
+                <span class="category">{{ s.category }}</span>
+                <span class="date">{{ s.date | date:'mediumDate' }}</span>
+            </div>
+
+            <h1>{{ s.title }}</h1>
+            <p class="lead">{{ s.description }}</p>
+        </div>
+    </header>
+
+    <div class="container layout-grid">
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <div class="glass-card content-body">
+                <!-- Render HTML content from Editor -->
+                <div class="rich-text" [innerHTML]="s.content"></div>
+            </div>
+        </main>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="glass-card client-card">
+                <h3>Project Details</h3>
+                <div class="detail-row">
+                    <span class="label">Client</span>
+                    <span class="value client-name">{{ s.client }}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Service</span>
+                    <span class="value">{{ s.category }}</span>
+                </div>
+
+                <div class="impact-box">
+                    <span class="impact-label">Key Impact</span>
+                    <span class="impact-value">{{ s.impact }}</span>
+                </div>
+            </div>
+
+            <div class="cta-card">
+                <div class="glow"></div>
+                <h3>Need similar results?</h3>
+                <p>Let's secure your infrastructure.</p>
+                <a routerLink="/contact" class="btn-primary">Contact Us</a>
+            </div>
+        </aside>
+    </div>
+</div>
+} @else {
+<div class="not-found">
+    <h1>Case Study Not Found</h1>
+    <a routerLink="/case-studies" class="btn-secondary">Back to List</a>
+</div>
+}

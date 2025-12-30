@@ -1,0 +1,202 @@
+/* ================= PARALLAX UTILITIES ================= */
+
+/* Parallax Container */
+.parallax-container {
+    position: relative;
+    overflow: hidden;
+    perspective: 1000px;
+    perspective-origin: center center;
+}
+
+/* Parallax Layers */
+.parallax-layer {
+    position: absolute;
+    inset: 0;
+    will-change: transform;
+    pointer-events: none;
+}
+
+.parallax-layer--bg {
+    z-index: -3;
+    transform: translateZ(-300px) scale(1.3);
+}
+
+.parallax-layer--mid {
+    z-index: -2;
+    transform: translateZ(-150px) scale(1.15);
+}
+
+.parallax-layer--front {
+    z-index: -1;
+    transform: translateZ(-50px) scale(1.05);
+}
+
+/* ================= ORGANIC SHAPES ================= */
+
+/* Leaf Pattern Background */
+.leaf-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.06;
+    background-image:
+        radial-gradient(ellipse 100px 150px at 20% 30%, var(--color-green-400) 0%, transparent 70%),
+        radial-gradient(ellipse 80px 120px at 80% 20%, var(--color-green-500) 0%, transparent 70%),
+        radial-gradient(ellipse 120px 80px at 60% 70%, var(--color-green-300) 0%, transparent 70%),
+        radial-gradient(ellipse 90px 140px at 10% 80%, var(--color-green-400) 0%, transparent 70%),
+        radial-gradient(ellipse 100px 100px at 90% 60%, var(--color-green-500) 0%, transparent 70%);
+    animation: sway 12s ease-in-out infinite;
+}
+
+/* Floating Leaves */
+.floating-leaf {
+    position: absolute;
+    width: 40px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-green-400) 0%, var(--color-green-600) 100%);
+    border-radius: 0 80% 10% 80%;
+    opacity: 0.15;
+    animation: floatLeaf 8s ease-in-out infinite;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        width: 60%;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.3);
+        transform: rotate(-20deg);
+    }
+}
+
+/* Vine Decoration */
+.vine-border {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            var(--color-green-400) 20%,
+            var(--color-green-500) 50%,
+            var(--color-green-400) 80%,
+            transparent 100%);
+    opacity: 0.3;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20'%3E%3Cpath d='M0,10 Q25,0 50,10 T100,10 T150,10 T200,10' stroke='%23000' stroke-width='3' fill='none'/%3E%3C/svg%3E");
+    mask-size: 200px 20px;
+    mask-repeat: repeat-x;
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes sway {
+
+    0%,
+    100% {
+        transform: translateX(0) rotate(0deg);
+    }
+
+    25% {
+        transform: translateX(10px) rotate(1deg);
+    }
+
+    75% {
+        transform: translateX(-10px) rotate(-1deg);
+    }
+}
+
+@keyframes floatLeaf {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    33% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+
+    66% {
+        transform: translateY(-10px) rotate(-3deg);
+    }
+}
+
+@keyframes grow {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
+    }
+
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 40px rgba(74, 222, 128, 0.5);
+    }
+}
+
+@keyframes vineGrow {
+    from {
+        stroke-dashoffset: 1000;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* ================= SCROLL REVEAL ================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+    transition-delay: 0.3s;
+}
+
+.reveal-delay-4 {
+    transition-delay: 0.4s;
+}
+
+/* ================= GLOW EFFECTS (GREEN) ================= */
+
+.glow-green {
+    box-shadow:
+        0 0 20px rgba(74, 222, 128, 0.3),
+        0 0 40px rgba(74, 222, 128, 0.2),
+        0 0 60px rgba(74, 222, 128, 0.1);
+}
+
+.glow-text {
+    text-shadow:
+        0 0 10px rgba(74, 222, 128, 0.5),
+        0 0 20px rgba(74, 222, 128, 0.3);
+}

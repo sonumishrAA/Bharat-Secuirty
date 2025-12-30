@@ -1,0 +1,29 @@
+.trust-strip {
+  background: rgba(11, 19, 43, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 32px 24px;
+
+  ul {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+    letter-spacing: 0.3px;
+  }
+}
+
+@media (max-width: 900px) {
+  .trust-strip ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

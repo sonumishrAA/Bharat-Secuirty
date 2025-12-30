@@ -1,0 +1,137 @@
+.cta {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #020617 0%, #000 60%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10vh 1.5rem;
+}
+
+.cta-card {
+  max-width: 900px;
+  width: 100%;
+  background: linear-gradient(135deg, #0f172a, #020617);
+  border-radius: 24px;
+  padding: clamp(2rem, 5vw, 4rem);
+  box-shadow: 0 60px 120px rgba(0, 0, 0, 0.7), inset 0 0 0 1px rgba(56, 189, 248, 0.2); // Add subtle inner border
+  text-align: center;
+  color: #e5e7eb; // Default text color for the card
+}
+
+.cta-content {
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    margin-bottom: 1rem;
+    color: #f8fafc;
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    opacity: 0.85;
+    max-width: 600px;
+    margin: 0 auto 2.5rem; // Adjust margin-bottom
+    line-height: 1.6;
+  }
+}
+
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem; // Increase gap
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+
+  button {
+    padding: 14px 30px;
+    border-radius: 999px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: clamp(0.9rem, 1.5vw, 1rem); // Responsive font size
+    border: none;
+    transition: all 0.3s ease; // Smooth transitions
+  }
+
+  .primary {
+    background: #38bdf8;
+    color: #020617;
+
+    &:hover {
+      background: #22aae0; // Darker shade on hover
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+    }
+  }
+
+  .secondary {
+    background: transparent;
+    border: 2px solid #38bdf8;
+    color: #38bdf8;
+
+    &:hover {
+      background: rgba(56, 189, 248, 0.15);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+    }
+  }
+}
+
+.cta-note {
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  opacity: 0.7;
+  margin-top: 3rem; // Adjust margin-top
+  color: #9ca3af;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cta-card {
+    padding: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .cta-content {
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+    }
+    p {
+      font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+      margin-bottom: 2rem;
+    }
+  }
+
+  .cta-actions {
+    gap: 1rem;
+    flex-direction: column; // Stack buttons on smaller screens
+    button {
+      width: 80%;
+      margin: 0 auto;
+    }
+  }
+
+  .cta-note {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-card {
+    padding: 1.5rem;
+  }
+
+  .cta-content {
+    h1 {
+      font-size: 1.8rem;
+    }
+    p {
+      font-size: 0.9rem;
+    }
+  }
+
+  .cta-actions {
+    button {
+      width: 90%;
+    }
+  }
+
+  .cta-note {
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,85 @@
+<div class="editor-container">
+    <div class="header">
+        <h1>Homepage Content</h1>
+    </div>
+
+    <div class="tabs">
+        <button [class.active]="activeTab === 'stats'" (click)="activeTab = 'stats'">Statistics</button>
+        <button [class.active]="activeTab === 'testimonials'" (click)="activeTab = 'testimonials'">Testimonials</button>
+    </div>
+
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="success-alert">
+        {{ successMessage }}
+    </div>
+
+    <!-- Stats Form -->
+    <form *ngIf="activeTab === 'stats'" [formGroup]="statsForm" (ngSubmit)="saveStats()" class="content-form">
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Happy Clients</label>
+                <input type="number" formControlName="clients">
+            </div>
+            <div class="form-group">
+                <label>Projects Completed</label>
+                <input type="number" formControlName="projects">
+            </div>
+            <div class="form-group">
+                <label>Years Experience</label>
+                <input type="number" formControlName="years">
+            </div>
+            <div class="form-group">
+                <label>Team Members</label>
+                <input type="number" formControlName="team">
+            </div>
+            <div class="form-group">
+                <label>Success Rate (%)</label>
+                <input type="number" formControlName="successRate">
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" [disabled]="statsForm.invalid" class="btn-primary">Save Statistics</button>
+        </div>
+    </form>
+
+    <!-- Testimonials Form -->
+    <form *ngIf="activeTab === 'testimonials'" [formGroup]="testimonialsForm" (ngSubmit)="saveTestimonials()"
+        class="content-form">
+        <div formArrayName="items">
+            <div *ngFor="let item of testimonialControls; let i = index" [formGroupName]="i" class="card-item">
+                <div class="card-header">
+                    <h3>Testimonial #{{ i + 1 }}</h3>
+                    <button type="button" (click)="removeTestimonial(i)" class="btn-icon delete">🗑️</button>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" formControlName="name">
+                    </div>
+                    <div class="form-group">
+                        <label>Role</label>
+                        <input type="text" formControlName="role">
+                    </div>
+                    <div class="form-group">
+                        <label>Company</label>
+                        <input type="text" formControlName="company">
+                    </div>
+                    <div class="form-group">
+                        <label>Rating (1-5)</label>
+                        <input type="number" formControlName="rating" min="1" max="5">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Review</label>
+                    <textarea formControlName="review" rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions space-between">
+            <button type="button" (click)="addTestimonial()" class="btn-secondary">+ Add Testimonial</button>
+            <button type="submit" [disabled]="testimonialsForm.invalid" class="btn-primary">Save Testimonials</button>
+        </div>
+    </form>
+</div>

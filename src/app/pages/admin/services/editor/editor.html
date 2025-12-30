@@ -1,0 +1,83 @@
+<div class="editor-container">
+    <div class="header">
+        <h1>{{ isEdit ? 'Edit Service' : 'New Service' }}</h1>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" formControlName="title">
+            </div>
+
+            <div class="form-group">
+                <label>Slug</label>
+                <input type="text" formControlName="slug">
+            </div>
+
+            <div class="form-group">
+                <label>Type</label>
+                <select formControlName="type">
+                    <option value="web_pentest">Web & App Pentesting</option>
+                    <option value="mobile_pentest">Mobile Pentesting</option>
+                    <option value="osint">OSINT Investigations</option>
+                    <option value="incident_response">Incident Response</option>
+                    <option value="training">Awareness Training</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Icon (Emoji)</label>
+                <input type="text" formControlName="icon">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Short Description</label>
+            <textarea formControlName="shortDescription" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Full Description (Markdown/HTML)</label>
+            <textarea formControlName="fullDescription" rows="8"></textarea>
+        </div>
+
+        <div class="lists-grid">
+            <div class="list-section">
+                <label>Features <button type="button" (click)="addFeature()" class="btn-sm">+</button></label>
+                <div formArrayName="features">
+                    @for (control of features.controls; track $index) {
+                    <div class="array-item">
+                        <input [formControlName]="$index">
+                        <button type="button" (click)="removeFeature($index)" class="btn-icon">🗑️</button>
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <div class="list-section">
+                <label>Benefits <button type="button" (click)="addBenefit()" class="btn-sm">+</button></label>
+                <div formArrayName="benefits">
+                    @for (control of benefits.controls; track $index) {
+                    <div class="array-item">
+                        <input [formControlName]="$index">
+                        <button type="button" (click)="removeBenefit($index)" class="btn-icon">🗑️</button>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group checkbox">
+            <label>
+                <input type="checkbox" formControlName="isActive">
+                Active
+            </label>
+        </div>
+
+        <div class="actions">
+            <button type="submit" [disabled]="form.invalid" class="btn-primary">Save Service</button>
+            <button type="button" routerLink="/admin/services" class="btn-secondary">Cancel</button>
+        </div>
+    </form>
+</div>

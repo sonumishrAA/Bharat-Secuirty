@@ -1,0 +1,55 @@
+<div class="contact-container">
+  <div class="header">
+    <h1>Start Your Engagement</h1>
+    <p>Secure your infrastructure today. Fill out the form below.</p>
+  </div>
+
+  <div class="form-card">
+    @if (submitted) {
+    <div class="success-message">
+      <div class="check">✅</div>
+      <h2>Request Received!</h2>
+      <p>Our security team will review your requirements and contact you within 24 hours.</p>
+      <button (click)="reset()" class="btn-primary">Send Another</button>
+    </div>
+    } @else {
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" formControlName="name" placeholder="John Doe">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" formControlName="email" placeholder="john@company.com">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Company</label>
+        <input type="text" formControlName="company" placeholder="Acme Corp">
+      </div>
+
+      <div class="form-group">
+        <label>Service Interest</label>
+        <select formControlName="serviceInterest">
+          <option value="">Select a Service...</option>
+          @for (s of services(); track s.id) {
+          <option [value]="s.id">{{ s.title }}</option>
+          }
+          <option value="Other">Other Requirement</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Message / Scope</label>
+        <textarea formControlName="message" rows="5" placeholder="Describe your security needs..."></textarea>
+      </div>
+
+      <button type="submit" [disabled]="form.invalid" class="btn-primary">
+        Submit Request
+      </button>
+    </form>
+    }
+  </div>
+</div>

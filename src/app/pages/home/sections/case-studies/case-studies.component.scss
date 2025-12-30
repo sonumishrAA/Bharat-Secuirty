@@ -1,0 +1,136 @@
+.case-studies {
+  min-height: 200vh;
+  background: #020617;
+  color: #e5e7eb;
+  padding: 15vh 0; // Adjust vertical padding
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.heading {
+  text-align: center;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: 10vh; // Adjust margin
+  max-width: 900px;
+  padding: 0 20px;
+}
+
+.note {
+  text-align: center;
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  opacity: 0.7;
+  margin-top: 5vh; // Adjust margin
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.book {
+  position: relative;
+  width: clamp(280px, 60vw, 320px); // Responsive width
+  height: clamp(380px, 80vw, 420px); // Responsive height
+  margin: 0 auto;
+  perspective: 1200px;
+}
+
+.case-page {
+  position: absolute;
+  inset: 0;
+  background: #0f172a;
+  border-radius: 12px;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(34, 211, 238, 0.2); // Subtle border
+
+  .content {
+    padding: 1.5rem; // Adjust padding
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; // Distribute content vertically
+    height: 100%;
+  }
+
+  h2 {
+    margin-top: 1rem;
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem); // Responsive font size
+    color: #38bdf8; // Highlight title
+  }
+
+  p {
+    margin-top: 0.75rem;
+    opacity: 0.85;
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem); // Responsive font size
+    line-height: 1.5;
+  }
+
+  strong {
+    color: #22d3ee; // Highlight strong text
+  }
+}
+
+.severity {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #38bdf8;
+  color: #020617;
+  font-weight: 700;
+  font-size: clamp(0.7rem, 1.5vw, 0.8rem); // Responsive font size
+  margin-bottom: 10px; // Add margin
+}
+
+.severity.critical {
+  background: #ef4444;
+  color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .case-studies {
+    padding: 10vh 0;
+  }
+
+  .heading {
+    margin-bottom: 8vh;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  .note {
+    margin-top: 3vh;
+  }
+
+  .book {
+    width: clamp(250px, 70vw, 300px);
+    height: clamp(350px, 90vw, 400px);
+  }
+
+  .case-page .content {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    margin-bottom: 5vh;
+    font-size: 2rem;
+  }
+
+  .book {
+    width: clamp(200px, 80vw, 250px);
+    height: clamp(280px, 100vw, 350px);
+  }
+
+  .case-page .content {
+    padding: 1rem;
+  }
+
+  .case-page h2 {
+    font-size: 1.1rem;
+  }
+
+  .case-page p {
+    font-size: 0.8rem;
+  }
+}

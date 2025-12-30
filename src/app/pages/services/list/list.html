@@ -1,0 +1,17 @@
+<div class="services-container">
+  <div class="header">
+    <h1>Our Expertise</h1>
+    <p>Manual-first penetration testing and security services.</p>
+  </div>
+
+  <div class="grid">
+    @for (service of services(); track service.id) {
+    <a [routerLink]="['/services', service.slug]" class="service-card">
+      <div class="icon">{{ service.icon }}</div>
+      <h3>{{ service.title }}</h3>
+      <p>{{ service.shortDescription }}</p>
+      <div class="arrow">→</div>
+    </a>
+    }
+  </div>
+</div>

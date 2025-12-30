@@ -1,0 +1,48 @@
+<div class="page-header">
+    <h1>Inquiries & Bookings</h1>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Client Name</th>
+                <th>Company</th>
+                <th>Message</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (inq of inquiries(); track inq.id) {
+            <tr>
+                <td>{{ inq.date | date:'mediumDate' }}</td>
+                <td>
+                    <div class="client-name">{{ inq.name }}</div>
+                    <div class="client-email">{{ inq.email }}</div>
+                </td>
+                <td>{{ inq.company || '-' }}</td>
+                <td class="message-cell">{{ inq.message | slice:0:50 }}...</td>
+                <td>
+                    <span class="badge" [class.new]="inq.status === 'New'"
+                        [class.contacted]="inq.status === 'Contacted'" [class.closed]="inq.status === 'Closed'">
+                        {{ inq.status }}
+                    </span>
+                </td>
+                <td>
+                    <a [routerLink]="['/admin/inquiries', inq.id]" class="btn-sm">View</a>
+                    @if (inq.status === 'New') {
+                    <button (click)="markContacted(inq.id)" class="btn-sm btn-secondary">Mark Read</button>
+                    }
+                </td>
+            </tr>
+            }
+            @if (inquiries().length === 0) {
+            <tr>
+                <td colspan="6" class="empty">No inquiries found.</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

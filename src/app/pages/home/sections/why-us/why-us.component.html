@@ -1,0 +1,16 @@
+<section class="why-us">
+  <div class="intro">
+    <h1>{{ title }}</h1>
+    <p>{{ paragraph }}</p>
+  </div>
+
+  <div class="marquee">
+    <div class="marquee-row">
+      <span *ngFor="let item of row1">{{ item }}</span>
+    </div>
+
+    <div class="marquee-row reverse">
+      <span *ngFor="let item of row2">{{ item }}</span>
+    </div>
+  </div>
+</section>

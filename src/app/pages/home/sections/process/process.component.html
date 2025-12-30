@@ -1,0 +1,15 @@
+<section class="process">
+  <div class="process-panel intro">
+    <div class="content">
+      <h2>{{ title }}</h2>
+      <p>{{ paragraph }}</p>
+    </div>
+  </div>
+  <div class="process-panel {{step.class}}" *ngFor="let step of steps; let i = index">
+    <div class="process-content">
+      <h2>0{{i + 1}}</h2>
+      <h3>{{step.title}}</h3>
+      <p>{{step.description}}</p>
+    </div>
+  </div>
+</section>

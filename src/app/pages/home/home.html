@@ -1,0 +1,357 @@
+<div class="page-loader" *ngIf="isLoading()">
+  <div class="loader-content">
+    <div class="loader">
+      <div class="box">
+        <div class="logo">
+          <span class="bs-text">BS</span>
+          <span class="bs-icon">🛡️</span>
+        </div>
+      </div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= HERO SECTION ================= -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hero-gradient"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      CYBERSECURITY REDEFINED
+    </div>
+
+    <h1 class="hero-title">
+      <span class="gradient-text">Outthink</span>
+      <span>Attackers</span>
+    </h1>
+
+    <p class="hero-subtext">
+      We don't just find vulnerabilities—we think like hackers to
+      <span class="highlight">anticipate, simulate, and eliminate</span>
+      threats before they become breaches.
+    </p>
+
+    <div class="hero-stats">
+      @for (stat of displayStats; track stat.id) {
+      <div class="stat-item">
+        <div class="stat-icon">{{ stat.icon }}</div>
+        <div class="stat-content">
+          <div class="stat-value">{{ stat.value }}{{ stat.suffix }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="hero-actions">
+      <button class="btn-primary" (click)="openContactForm()">
+        <span>Get Security Audit</span>
+      </button>
+
+      <button class="btn-secondary" (click)="scrollToSection('services')">
+        <span>View Our Capabilities</span>
+      </button>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll to explore</span>
+    </div>
+  </div>
+</section>
+
+<!-- Rest of your HTML (clients, services, etc.) as is... -->
+
+<!-- ================= CLIENTS SECTION ================= -->
+<section class="clients-section">
+  <div class="section-header">
+    <div class="eyebrow">TRUSTED BY SECURITY LEADERS</div>
+    <h2>Protecting India's Digital Infrastructure</h2>
+  </div>
+
+  <div class="clients-marquee-container">
+    <div class="clients-marquee">
+      <!-- Original Set -->
+      @for (client of clientLogos(); track client.id) {
+      <div class="client-logo">{{ client.logo }} {{ client.name }}</div>
+      }
+      <!-- Duplicate Set for Infinite Scroll -->
+      @for (client of clientLogos(); track client.id + 'dup') {
+      <div class="client-logo">{{ client.logo }} {{ client.name }}</div>
+      }
+
+      <!-- Fallback Content (Duplicated) -->
+      @if (clientLogos().length === 0) {
+      <div class="client-logo">🏦 FinTech</div>
+      <div class="client-logo">🏥 HealthCare</div>
+      <div class="client-logo">🛒 E-Commerce</div>
+      <div class="client-logo">🏢 Enterprise</div>
+      <div class="client-logo">🚀 TechStartup</div>
+      <div class="client-logo">🏛️ GovSecure</div>
+
+      <div class="client-logo">🏦 FinTech</div>
+      <div class="client-logo">🏥 HealthCare</div>
+      <div class="client-logo">🛒 E-Commerce</div>
+      <div class="client-logo">🏢 Enterprise</div>
+      <div class="client-logo">🚀 TechStartup</div>
+      <div class="client-logo">🏛️ GovSecure</div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES SECTION ================= -->
+<section id="services" class="services-section">
+  <div class="section-header">
+    <div class="eyebrow">OUR EXPERTISE</div>
+    <h2>Comprehensive Security Solutions</h2>
+    <p class="section-subtitle">
+      From prevention to response, we cover every aspect of your security lifecycle
+    </p>
+  </div>
+
+  <div class="services-grid">
+    @for (service of services(); track service.id) {
+    <div class="service-card">
+      <div class="service-header">
+        <div class="service-icon">{{ service.icon }}</div>
+        <div class="service-badge">Advanced</div>
+      </div>
+
+      <h3 class="service-title">{{ service.title }}</h3>
+      <p class="service-description">{{ service.shortDescription }}</p>
+
+      <div class="service-features">
+        @for (feature of service.features; track feature) {
+        <span class="feature-tag">{{ feature }}</span>
+        }
+      </div>
+
+      <button class="service-btn" (click)="openContactForm()">
+        Learn More
+        <span class="btn-arrow">→</span>
+      </button>
+    </div>
+    }
+  </div>
+</section>
+
+<!-- ================= TECH STACK ================= -->
+<section class="tech-section">
+  <div class="section-header">
+    <div class="eyebrow">OUR ARSENAL</div>
+    <h2>Industry-Leading Tools & Technologies</h2>
+  </div>
+
+  <div class="tech-grid">
+    @for (tech of technologies(); track tech.name) {
+    <div class="tech-card">
+      <div class="tech-icon">{{ tech.icon }}</div>
+      <div class="tech-name">{{ tech.name }}</div>
+    </div>
+    }
+  </div>
+
+  <div class="tech-highlight">
+    <div class="highlight-content">
+      <div class="highlight-icon">🚀</div>
+      <div class="highlight-text">
+        <strong>+ Custom-built automation</strong> for unique attack vectors
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CASE STUDIES ================= -->
+<section class="case-studies-section">
+  <div class="section-header">
+    <div class="eyebrow">PROVEN IMPACT</div>
+    <h2>Real-World Security Success Stories</h2>
+    <p class="section-subtitle">
+      Discover how we've helped businesses across India strengthen their security posture
+    </p>
+  </div>
+
+  <div class="case-studies-grid">
+    @for (study of caseStudies(); track study.id) {
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-logo">{{ study.logo }}</div>
+        <span class="case-category">{{ study.category }}</span>
+      </div>
+
+      <h3 class="case-title">{{ study.title }}</h3>
+      <p class="case-description">{{ study.description }}</p>
+
+      <div class="case-impact">
+        <div class="impact-label">Impact:</div>
+        <div class="impact-value">{{ study.impact }}</div>
+      </div>
+
+      <div class="case-stats">
+        <div class="stat">
+          <div class="stat-value">100%</div>
+          <div class="stat-label">Security</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">0</div>
+          <div class="stat-label">False Positives</div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</section>
+
+<!-- ================= METHODOLOGY ================= -->
+<section class="methodology-section">
+  <div class="methodology-content">
+    <div class="section-header">
+      <div class="eyebrow">OUR PROCESS</div>
+      <h2>Intelligence-Driven Security Approach</h2>
+      <p class="section-subtitle">
+        A systematic methodology that uncovers vulnerabilities before attackers do
+      </p>
+    </div>
+
+    <div class="process-steps">
+      @for (step of processSteps(); track step.id) {
+      <div class="process-step">
+        <div class="step-number">0{{ step.stepNumber }}</div>
+        <h3 class="step-title">{{ step.title }}</h3>
+        <p class="step-description">{{ step.description }}</p>
+      </div>
+      @if (!$last) {
+      <div class="process-line"></div>
+      }
+      }
+      @if (processSteps().length === 0) {
+      <div class="process-step">
+        <div class="step-number">01</div>
+        <h3 class="step-title">Reconnaissance</h3>
+        <p class="step-description">Deep threat modeling and asset discovery</p>
+      </div>
+      <div class="process-line"></div>
+      <div class="process-step">
+        <div class="step-number">02</div>
+        <h3 class="step-title">Simulation</h3>
+        <p class="step-description">Real-world attack simulation & exploitation</p>
+      </div>
+      <div class="process-line"></div>
+      <div class="process-step">
+        <div class="step-number">03</div>
+        <h3 class="step-title">Analysis</h3>
+        <p class="step-description">Comprehensive vulnerability assessment</p>
+      </div>
+      <div class="process-line"></div>
+      <div class="process-step">
+        <div class="step-number">04</div>
+        <h3 class="step-title">Remediation</h3>
+        <p class="step-description">Actionable reports with mitigation steps</p>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="testimonials-section">
+  <div class="section-header">
+    <div class="eyebrow">CLIENT VOICES</div>
+    <h2>Trusted by Security Teams Nationwide</h2>
+  </div>
+
+  <div class="testimonials-grid">
+    @for (testimonial of testimonials(); track testimonial.id) {
+    <div class="testimonial-card">
+      <div class="testimonial-rating">
+        @for (star of [1,2,3,4,5]; track star) {
+        <span class="star" [class.dimmed]="star > (testimonial.rating || 5)">⭐</span>
+        }
+      </div>
+
+      <p class="testimonial-content">"{{ testimonial.content }}"</p>
+
+      <div class="testimonial-author">
+        <div class="author-avatar">{{ testimonial.avatar || '👤' }}</div>
+        <div class="author-info">
+          <div class="author-name">{{ testimonial.clientName }}</div>
+          <div class="author-role">{{ testimonial.role }} @ {{ testimonial.company }}</div>
+        </div>
+      </div>
+    </div>
+    }
+    @if (testimonials().length === 0) {
+    <div class="testimonial-card">
+      <div class="testimonial-rating">
+        <span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span
+          class="star">⭐</span><span class="star">⭐</span>
+      </div>
+      <p class="testimonial-content">"Bharat Security identified critical vulnerabilities that our internal team missed.
+        Their proactive approach saved us from a potential breach."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">👨‍💼</div>
+        <div class="author-info">
+          <div class="author-name">Rajesh Kumar</div>
+          <div class="author-role">CTO @ FinTech Corp</div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</section>
+
+<!-- ================= CTA SECTION ================= -->
+<section id="contact" class="cta-section">
+  <div class="cta-gradient"></div>
+
+  <div class="cta-content">
+    <div class="section-header">
+      <div class="eyebrow">READY TO SECURE?</div>
+      <h2>Get Your Free Security Assessment</h2>
+      <p class="section-subtitle">
+        Limited time: First consultation free + 15% discount on comprehensive audit
+      </p>
+    </div>
+
+    <div class="cta-features">
+      <div class="feature">
+        <div class="feature-icon">✅</div>
+        <div class="feature-text">No-obligation consultation</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">✅</div>
+        <div class="feature-text">Customized security roadmap</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">✅</div>
+        <div class="feature-text">30-day vulnerability guarantee</div>
+      </div>
+    </div>
+
+    <div class="cta-actions">
+      <button class="btn-primary btn-glow btn-large" (click)="openContactForm()">
+        <span>Start Free Assessment</span>
+        <svg class="btn-icon" viewBox="0 0 24 24">
+          <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+        </svg>
+      </button>
+
+      <button class="btn-secondary btn-large" (click)="scrollToSection('services')">
+        <span>View Pricing Plans</span>
+      </button>
+    </div>
+
+    <div class="cta-note">
+      <div class="note-icon">🛡️</div>
+      <span>100% confidential • No data retention • ISO 27001 certified</span>
+    </div>
+  </div>
+</section>

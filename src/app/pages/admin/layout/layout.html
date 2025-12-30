@@ -1,0 +1,51 @@
+<div class="admin-container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="shield">🛡️</span> Bharat Security
+        </div>
+
+        <nav class="admin-nav">
+            <a routerLink="/admin/dashboard" routerLinkActive="active">
+                <span class="icon">📊</span> Dashboard
+            </a>
+            <a routerLink="/admin/services" routerLinkActive="active">
+                <span class="icon">🛠️</span> Services
+            </a>
+            <a routerLink="/admin/case-studies" routerLinkActive="active">
+                <span class="icon">📂</span> Case Studies
+            </a>
+            <a routerLink="/admin/inquiries" routerLinkActive="active">
+                <span class="icon">📨</span> Inquiries
+            </a>
+            <a routerLink="/admin/blog" routerLinkActive="active">
+                <span class="icon">📝</span> Blog
+            </a>
+            <a routerLink="/admin/media" routerLinkActive="active">
+                <span class="icon">🖼️</span> Media Library
+            </a>
+            <a routerLink="/admin/testimonials" routerLinkActive="active">
+                <span class="icon">⭐</span> Testimonials
+            </a>
+            <a routerLink="/admin/statistics" routerLinkActive="active">
+                <span class="icon">📈</span> Statistics
+            </a>
+            <a routerLink="/admin/homepage" routerLinkActive="active">
+                <span class="icon">🏠</span> Home Content
+            </a>
+        </nav>
+
+        <div class="user-profile">
+            <div class="avatar">A</div>
+            <div class="info">
+                <span class="name">Admin User</span>
+                <button (click)="logout()" class="logout-btn">Logout</button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+        <router-outlet></router-outlet>
+    </main>
+</div>

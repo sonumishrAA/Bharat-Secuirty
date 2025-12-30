@@ -1,0 +1,48 @@
+<div class="case-studies-page">
+  <div class="container">
+    <header class="page-header">
+      <div class="header-content">
+        <h1>Security Case Studies</h1>
+        <p>Explore how Bharat Security solves critical vulnerabilities in real-world scenarios.</p>
+      </div>
+    </header>
+
+    <div class="studies-grid">
+      @for (study of caseStudies(); track study.id) {
+      <div class="study-card" (click)="navigateToDetail(study.id)">
+        <div class="card-image">
+          <!-- Fallback to a gradient if no image -->
+          @if (study.image) {
+          <img [src]="study.image" alt="{{ study.title }}">
+          } @else {
+          <div class="placeholder-img">{{ study.logo }}</div>
+          }
+          <div class="category-badge">{{ study.category }}</div>
+        </div>
+
+        <div class="card-content">
+          <div class="meta">
+            <span class="client">{{ study.client }}</span>
+            <span class="date">{{ study.date | date:'mediumDate' }}</span>
+          </div>
+
+          <h3>{{ study.title }}</h3>
+          <p class="excerpt">{{ study.description }}</p>
+
+          <div class="card-footer">
+            <div class="impact-metric">
+              <span class="label">Impact</span>
+              <span class="value">{{ study.impact }}</span>
+            </div>
+            <span class="link-arrow">Read Full Story →</span>
+          </div>
+        </div>
+      </div>
+      } @empty {
+      <div class="empty-state">
+        <p>No case studies published yet.</p>
+      </div>
+      }
+    </div>
+  </div>
+</div>

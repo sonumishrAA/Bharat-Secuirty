@@ -1,0 +1,65 @@
+:root {
+  /* ====== Living Plants Color Palette ====== */
+
+  /* Primary Greens */
+  --color-green-900: #052e16; // Deep forest (backgrounds)
+  --color-green-800: #14532d; // Forest green
+  --color-green-700: #15803d; // Rich green
+  --color-green-600: #16a34a; // Vibrant green
+  --color-green-500: #22c55e; // Fresh green
+  --color-green-400: #4ade80; // Mint green (PRIMARY)
+  --color-green-300: #86efac; // Light mint
+  --color-green-200: #bbf7d0; // Pale mint
+  --color-green-100: #dcfce7; // Soft green tint
+
+  /* Earth Tones */
+  --color-brown-700: #7c2d12; // Deep earth
+  --color-brown-600: #9a3412; // Terracotta
+  --color-brown-500: #ea580c; // Warm orange (ACCENT)
+  --color-cream-100: #fefce8; // Warm cream
+  --color-cream-200: #fef9c3; // Light cream
+
+  /* Utility Colors */
+  --color-red-500: #ef4444; // Danger
+  --color-amber-500: #f59e0b; // Warning
+
+  /* Semantic Aliases */
+  --bg-primary: var(--color-green-900);
+  --bg-secondary: #071a0e;
+  --color-primary: var(--color-green-400);
+  --color-danger: var(--color-red-500);
+  --text-primary: #ecfdf5;
+  --text-secondary: var(--color-green-300);
+  --text-muted: var(--color-green-200);
+
+  /* Typography */
+  --font-family-primary: 'Inter', sans-serif; // Assuming Inter is used or will be imported
+  --font-family-secondary: 'Montserrat', sans-serif; // Example secondary font
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Other */
+  --radius: 12px;
+  --blur-glass: 14px;
+
+  --container-max-width: 1440px; // Max width for content
+  --container-padding-x: 28px; // Default horizontal padding for containers
+}
+
+/* Responsive Container Padding */
+@media (max-width: 768px) {
+  :root {
+    --container-padding-x: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --container-padding-x: 15px;
+  }
+}

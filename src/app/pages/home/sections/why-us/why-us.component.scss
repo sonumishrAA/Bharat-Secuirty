@@ -1,0 +1,112 @@
+.why-us {
+  min-height: 100vh;
+  background: #04091e;
+  color: #f6f2e8;
+  padding: 20vh 0;
+  overflow: hidden;
+  display: flex; // Use flexbox for vertical alignment
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 10vh;
+  max-width: 900px; // Limit intro width
+  padding: 0 20px; // Add horizontal padding
+
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    opacity: 0.8;
+    line-height: 1.6;
+  }
+}
+
+.marquee {
+  width: 100%; // Ensure marquee takes full width
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.marquee-row {
+  display: flex;
+  gap: 2rem;
+  white-space: nowrap;
+  will-change: transform;
+
+  span {
+    flex-shrink: 0;
+    padding: 18px 36px;
+    border-radius: 999px;
+    background: #6e4ce1;
+    color: #fff;
+    font-weight: 600;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); // Add subtle shadow
+  }
+}
+
+.reverse span {
+  background: #38bdf8;
+  color: #020617;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .why-us {
+    padding: 10vh 0; // Adjust vertical padding
+  }
+
+  .intro {
+    margin-bottom: 5vh; // Adjust margin
+  }
+
+  .marquee {
+    gap: 1.5rem; // Smaller gap for rows
+  }
+
+  .marquee-row {
+    gap: 1.5rem; // Smaller gap for items
+  }
+
+  .marquee-row span {
+    padding: 14px 28px; // Smaller padding
+    font-size: clamp(0.9rem, 1.8vw, 1.2rem); // Adjust font size
+  }
+}
+
+@media (max-width: 480px) {
+  .why-us {
+    padding: 8vh 0;
+  }
+
+  .intro {
+    h1 {
+      font-size: 2rem;
+    }
+    p {
+      font-size: 0.9rem;
+    }
+  }
+
+  .marquee {
+    gap: 1rem;
+  }
+
+  .marquee-row {
+    gap: 1rem;
+  }
+
+  .marquee-row span {
+    padding: 10px 20px;
+    font-size: 0.8rem;
+  }
+}

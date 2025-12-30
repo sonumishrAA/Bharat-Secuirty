@@ -1,0 +1,128 @@
+/* ================= ADMIN GLOBAL THEME ================= */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+    background: #020617;
+    /* Frontend Deep Black */
+    background-image: radial-gradient(circle at 50% 0%, rgba(22, 101, 52, 0.15), transparent 70%);
+    color: #e2e8f0;
+    font-family: 'Outfit', sans-serif;
+}
+
+/* ================= GLASS SIDEBAR ================= */
+.sidebar {
+    width: 280px;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+
+    .brand {
+        height: 80px;
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #fff;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        gap: 12px;
+
+        .shield {
+            font-size: 24px;
+            filter: drop-shadow(0 0 5px rgba(74, 222, 128, 0.4));
+        }
+    }
+
+    .admin-nav {
+        flex: 1;
+        padding: 24px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        a {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 12px;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+
+            .icon {
+                margin-right: 12px;
+                font-size: 1.1rem;
+            }
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.03);
+                color: #fff;
+            }
+
+            &.active {
+                background: rgba(74, 222, 128, 0.1);
+                color: #4ade80;
+                border-color: rgba(74, 222, 128, 0.2);
+                box-shadow: 0 0 15px rgba(74, 222, 128, 0.05);
+            }
+        }
+    }
+
+    .user-profile {
+        padding: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: #064e3b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .info {
+            .name {
+                font-weight: 600;
+                color: #fff;
+                font-size: 0.9rem;
+            }
+
+            .logout-btn {
+                background: none;
+                border: none;
+                padding: 0;
+                color: #ef4444;
+                font-size: 0.8rem;
+                cursor: pointer;
+                margin-top: 4px;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+.content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}

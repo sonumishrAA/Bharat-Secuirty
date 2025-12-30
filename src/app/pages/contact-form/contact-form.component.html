@@ -1,0 +1,335 @@
+<div class="contact-dialog-container" role="dialog" aria-labelledby="contact-form-title">
+  <!-- Success State -->
+  @if (submitSuccess) {
+  <div class="success-state">
+    <div class="success-animation">
+      <div class="checkmark-circle">
+        <div class="checkmark"></div>
+      </div>
+      <h2>Request Submitted Successfully!</h2>
+      <p>
+        We've received your security assessment request. Our team will contact you within 24 hours.
+      </p>
+      <div class="success-details">
+        <p><strong>Reference ID:</strong> {{ referenceId }}</p>
+        <p><strong>Expected Response:</strong> Within 24 hours</p>
+      </div>
+      <button mat-button class="close-btn" (click)="dialogRef.close(true)">
+        <span>Close</span>
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  }
+
+  <!-- Form State -->
+  @if (!submitSuccess) {
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-header">
+      <h2 id="contact-form-title">Request Security Assessment</h2>
+      <p class="form-subtitle">
+        Fill out the form below and our security experts will contact you within 24 hours.
+      </p>
+    </div>
+
+    <!-- Progress Indicator -->
+    <div class="form-progress">
+      <div class="progress-bar">
+        <div class="progress-fill" [style.width]="(contactForm.valid ? '100' : '60') + '%'"></div>
+      </div>
+      <div class="progress-text">
+        {{ contactForm.valid ? '✓ Form Complete' : 'Fill required fields' }}
+      </div>
+    </div>
+
+    <!-- Error Message -->
+    @if (formError) {
+    <div class="form-error-global">
+      <mat-icon>error_outline</mat-icon>
+      <span>{{ formError }}</span>
+    </div>
+    }
+
+    <div class="form-body">
+      <!-- Personal Information -->
+      <div class="form-section">
+        <h3 class="section-title">
+          <mat-icon>person_outline</mat-icon>
+          Personal Information
+        </h3>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">
+              Full Name *
+              <mat-icon
+                class="info-icon"
+                matTooltip="Your full name as it appears on official documents"
+                >info</mat-icon
+              >
+            </label>
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              placeholder="John Smith"
+              [class.invalid]="formControls['name'].invalid && formControls['name'].touched"
+            />
+            @if (formControls['name'].invalid && formControls['name'].touched) {
+            <div class="error-message">
+              <mat-icon>error</mat-icon>
+              {{ getErrorMessage('name') }}
+            </div>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="email">
+              Email Address *
+              <mat-icon
+                class="info-icon"
+                matTooltip="We'll send confirmation and updates to this email"
+                >info</mat-icon
+              >
+            </label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              placeholder="john@company.com"
+              [class.invalid]="formControls['email'].invalid && formControls['email'].touched"
+            />
+            @if (formControls['email'].invalid && formControls['email'].touched) {
+            <div class="error-message">
+              <mat-icon>error</mat-icon>
+              {{ getErrorMessage('email') }}
+            </div>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="company">Company Name</label>
+            <input
+              id="company"
+              type="text"
+              formControlName="company"
+              placeholder="Your Company Inc."
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">
+              Phone Number
+              <mat-icon class="info-icon" matTooltip="Include country code for international calls"
+                >info</mat-icon
+              >
+            </label>
+            <input
+              id="phone"
+              type="tel"
+              formControlName="phone"
+              placeholder="+1 (555) 123-4567"
+              [class.invalid]="formControls['phone'].invalid && formControls['phone'].touched"
+            />
+            @if (formControls['phone'].invalid && formControls['phone'].touched) {
+            <div class="error-message">
+              <mat-icon>error</mat-icon>
+              {{ getErrorMessage('phone') }}
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Details -->
+      <div class="form-section">
+        <h3 class="section-title">
+          <mat-icon>work_outline</mat-icon>
+          Project Details
+        </h3>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="serviceType">Service Type *</label>
+            <mat-select
+              id="serviceType"
+              formControlName="serviceType"
+              placeholder="Select a service"
+            >
+              @for (service of serviceTypes; track service.id) {
+              <mat-option [value]="service.id">
+                <span class="service-option">
+                  <mat-icon class="service-icon">{{ service.icon }}</mat-icon>
+                  {{ service.name }}
+                </span>
+              </mat-option>
+              }
+            </mat-select>
+            @if (formControls['serviceType'].invalid && formControls['serviceType'].touched) {
+            <div class="error-message">
+              <mat-icon>error</mat-icon>
+              {{ getErrorMessage('serviceType') }}
+            </div>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="priority">Priority Level *</label>
+            <mat-select id="priority" formControlName="priority" placeholder="Select priority">
+              @for (priority of priorities; track priority.id) {
+              <mat-option [value]="priority.id">
+                <span class="priority-option" [style.color]="priority.color">
+                  <span class="priority-dot" [style.background]="priority.color"></span>
+                  {{ priority.name }}
+                </span>
+              </mat-option>
+              }
+            </mat-select>
+          </div>
+
+          <div class="form-group">
+            <label for="budget">Budget Range *</label>
+            <mat-select id="budget" formControlName="budget" placeholder="Select budget">
+              @for (budget of budgetRanges; track budget.id) {
+              <mat-option [value]="budget.id">
+                {{ budget.name }}
+              </mat-option>
+              }
+            </mat-select>
+            @if (formControls['budget'].invalid && formControls['budget'].touched) {
+            <div class="error-message">
+              <mat-icon>error</mat-icon>
+              {{ getErrorMessage('budget') }}
+            </div>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="timeline">Project Timeline</label>
+            <mat-select id="timeline" formControlName="timeline" placeholder="Select timeline">
+              <mat-option value="asap">ASAP</mat-option>
+              <mat-option value="1-2weeks">1-2 Weeks</mat-option>
+              <mat-option value="1month">1 Month</mat-option>
+              <mat-option value="2-3months">2-3 Months</mat-option>
+              <mat-option value="flexible">Flexible</mat-option>
+            </mat-select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Scope -->
+      <div class="form-section">
+        <h3 class="section-title">
+          <mat-icon>description</mat-icon>
+          Project Scope *
+        </h3>
+        <div class="form-group">
+          <label for="projectScope">
+            Describe your project or security concerns
+            <span class="char-counter" [style.color]="counterColor">
+              {{ projectScopeLength }}/50 characters minimum
+            </span>
+          </label>
+          <textarea
+            id="projectScope"
+            formControlName="projectScope"
+            placeholder="Describe your application, specific security concerns, and what you'd like us to focus on..."
+            rows="4"
+            [class.invalid]="
+              formControls['projectScope'].invalid && formControls['projectScope'].touched
+            "
+          ></textarea>
+          @if (formControls['projectScope'].invalid && formControls['projectScope'].touched) {
+          <div class="error-message">
+            <mat-icon>error</mat-icon>
+            {{ getErrorMessage('projectScope') }}
+          </div>
+          }
+          <div class="scope-hint">
+            <mat-icon>lightbulb</mat-icon>
+            <span
+              >Tip: Mention specific technologies, user count, and compliance requirements for
+              better estimation.</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Information -->
+      <div class="form-section">
+        <h3 class="section-title">
+          <mat-icon>add_circle_outline</mat-icon>
+          Additional Information
+        </h3>
+        <div class="form-group">
+          <label for="additionalInfo">Additional Notes or Requirements</label>
+          <textarea
+            id="additionalInfo"
+            formControlName="additionalInfo"
+            placeholder="Any additional information that might help us understand your needs better..."
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Terms and Conditions -->
+      <div class="form-section terms-section">
+        <div class="form-group checkbox-group">
+          <mat-checkbox formControlName="agreeToTerms" color="primary">
+            <span class="terms-text">
+              I agree to the
+              <a href="#" class="terms-link">Terms of Service</a> and
+              <a href="#" class="terms-link">Privacy Policy</a> *
+            </span>
+          </mat-checkbox>
+          @if (formControls['agreeToTerms'].invalid && formControls['agreeToTerms'].touched) {
+          <div class="error-message">
+            <mat-icon>error</mat-icon>
+            You must agree to the terms and conditions
+          </div>
+          }
+        </div>
+
+        <div class="form-group checkbox-group">
+          <mat-checkbox formControlName="marketingEmails" color="primary">
+            <span class="terms-text">
+              I'd like to receive security tips, case studies, and updates from your team
+            </span>
+          </mat-checkbox>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Actions -->
+    <div class="form-actions">
+      <button type="button" class="btn-cancel" (click)="onCancel()" [disabled]="isSubmitting">
+        Cancel
+      </button>
+      <button
+        type="submit"
+        class="btn-submit"
+        [disabled]="contactForm.invalid || isSubmitting"
+        [class.loading]="isSubmitting"
+      >
+        @if (!isSubmitting) {
+        <span>Submit Request</span>
+        } @if (isSubmitting) {
+        <span class="loading-text">
+          <mat-icon class="spinner">autorenew</mat-icon>
+          Submitting...
+        </span>
+        }
+      </button>
+    </div>
+
+    <!-- Security Note -->
+    <div class="security-note">
+      <mat-icon>lock</mat-icon>
+      <span>
+        Your information is protected with 256-bit SSL encryption. We never share your data with
+        third parties.
+      </span>
+    </div>
+  </form>
+  }
+</div>

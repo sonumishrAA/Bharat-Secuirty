@@ -1,13 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>BharatSecurity</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Bharat Security</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+    <!-- EMERGENCY SCROLL FIX -->
+    <style>
+      html,
+      body {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        height: auto !important;
+      }
+      body {
+        min-height: 100vh;
+        position: relative;
+      }
+      app-root {
+        display: block;
+        min-height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
 </html>

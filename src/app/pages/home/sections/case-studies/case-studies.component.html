@@ -1,0 +1,21 @@
+<section class="case-studies">
+  <h1 class="heading">{{ title }}</h1>
+
+  <div class="book">
+    <article
+      class="case-page"
+      *ngFor="let c of cases; let i = index"
+      [style.zIndex]="cases.length - i"
+    >
+      <div class="content">
+        <span class="severity" [class.critical]="c.severity === 'Critical'">
+          {{ c.severity }}
+        </span>
+        <h2>{{ c.title }}</h2>
+        <p><strong>Issue:</strong> {{ c.issue }}</p>
+        <p><strong>Impact:</strong> {{ c.impact }}</p>
+      </div>
+    </article>
+  </div>
+  <p class="note">{{ note }}</p>
+</section>

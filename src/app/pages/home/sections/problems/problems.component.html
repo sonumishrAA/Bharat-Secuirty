@@ -1,0 +1,21 @@
+<div class="problems-container">
+  <!-- Intro / Description -->
+  <div class="problem-description problem-panel intro">
+    <div class="content">
+      <h1>{{ intro.title }}</h1>
+      <p>{{ intro.paragraph }}</p>
+      <div class="scroll-down">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Problem Panels -->
+  <section class="problem-panel {{problem.class}}" *ngFor="let problem of problems">
+    <div class="content">
+      <h3>❌ {{ problem.title }}</h3>
+      <p [innerHTML]="problem.description"></p>
+      <p>{{ problem.solution }}</p>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,38 @@
+<div class="page-header">
+    <h1>Services Management</h1>
+    <a routerLink="/admin/services/new" class="btn-primary">+ Add New Service</a>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Icon</th>
+                <th>Title</th>
+                <th>Type</th>
+                <th>Slug</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (service of services(); track service.id) {
+            <tr>
+                <td class="icon-cell">{{ service.icon }}</td>
+                <td>{{ service.title }}</td>
+                <td>{{ service.type || '-' }}</td>
+                <td class="mono">{{ service.slug }}</td>
+                <td>
+                    <span class="badge" [class.active]="service.isActive">
+                        {{ service.isActive ? 'Active' : 'Draft' }}
+                    </span>
+                </td>
+                <td class="actions">
+                    <a [routerLink]="['/admin/services', service.id]" class="btn-icon">✏️</a>
+                    <button (click)="deleteService(service.id)" class="btn-icon danger">🗑️</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

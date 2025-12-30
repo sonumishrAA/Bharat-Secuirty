@@ -1,0 +1,141 @@
+.process {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.process-panel {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #e5e7eb;
+  font-weight: 600;
+  padding: 20px; // Add padding for mobile
+
+  h2 {
+    font-size: clamp(4rem, 20vw, 16rem);
+    opacity: 0.15;
+    margin: 0;
+  }
+
+  p {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    max-width: 600px;
+    margin-top: -2rem;
+    opacity: 0.9;
+  }
+}
+
+.process-panel.intro {
+  background: #020617; // Ensure intro panel has a background
+  .content {
+    max-width: 800px; // Max width for intro content
+    padding: 0 20px;
+    h2 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem); // Smaller h2 for intro
+      opacity: 1;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      margin-top: 0;
+      line-height: 1.6;
+      opacity: 0.8;
+    }
+  }
+}
+
+.process-content {
+  max-width: 700px; // Max width for step content
+  padding: 0 20px;
+  h2 {
+    font-size: clamp(2.5rem, 10vw, 6rem); // Number
+    opacity: 0.2;
+    margin-bottom: 0.5rem;
+  }
+  h3 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem); // Title
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  p {
+    font-size: clamp(1rem, 2vw, 1.2rem); // Description
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+}
+
+/* Color themes */
+.recon {
+  background: #020617;
+}
+
+.model {
+  background: #022c22;
+}
+
+.exploit {
+  background: #3b0764;
+}
+
+.report {
+  background: #111827;
+}
+
+.fix {
+  background: #0f172a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .process-panel.intro .content {
+    h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+    }
+    p {
+      font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    }
+  }
+
+  .process-content {
+    h2 {
+      font-size: clamp(2rem, 8vw, 4rem);
+    }
+    h3 {
+      font-size: clamp(1.2rem, 3vw, 2rem);
+    }
+    p {
+      font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .process-panel {
+    padding: 10px;
+  }
+  .process-panel.intro .content {
+    h2 {
+      font-size: 1.8rem;
+    }
+    p {
+      font-size: 0.8rem;
+    }
+  }
+  .process-content {
+    h2 {
+      font-size: 2.5rem;
+    }
+    h3 {
+      font-size: 1.1rem;
+    }
+    p {
+      font-size: 0.8rem;
+    }
+  }
+}

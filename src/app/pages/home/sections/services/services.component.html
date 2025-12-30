@@ -1,0 +1,22 @@
+<section class="panel services">
+  <div class="section-intro">
+    <h2>{{ title }}</h2>
+    <p>{{ paragraph }}</p>
+  </div>
+
+  <div id="services" class="gallery">
+    <ul class="cards">
+      <li *ngFor="let service of services">
+        <div class="service-card">
+          <h3>{{ service.title }}</h3>
+          <p *ngFor="let p of service.description">{{ p }}</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="actions">
+      <button (click)="prev()">Prev</button>
+      <button (click)="next()">Next</button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,72 @@
+<div class="dashboard-header">
+    <h1>Dashboard</h1>
+    <p>Overview of your security platform performance</p>
+</div>
+
+<!-- STATS GRID -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="icon green">🛠️</div>
+        <div class="meta">
+            <h3>Active Services</h3>
+            <span class="value">{{ activeServicesCount }}</span>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="icon blue">📂</div>
+        <div class="meta">
+            <h3>Case Studies</h3>
+            <span class="value">{{ caseStudies().length }}</span>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="icon purple">📨</div>
+        <div class="meta">
+            <h3>New Inquiries</h3>
+            <span class="value">{{ newInquiriesCount }}</span>
+        </div>
+    </div>
+</div>
+
+<!-- RECENT ACTIVITY -->
+<div class="section-title">
+    <h2>Recent Inquiries</h2>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Client</th>
+                <th>Service Interest</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (inquiry of recentInquiries; track inquiry.id) {
+            <tr>
+                <td>
+                    <div class="client-name">{{ inquiry.name }}</div>
+                    <div class="client-company">{{ inquiry.company }}</div>
+                </td>
+                <td>{{ inquiry.serviceInterest || 'General' }}</td>
+                <td>
+                    <span class="badge" [class.new]="inquiry.status === 'New'"
+                        [class.progress]="inquiry.status === 'Contacted'">
+                        {{ inquiry.status }}
+                    </span>
+                </td>
+                <td>{{ inquiry.date | date:'mediumDate' }}</td>
+            </tr>
+            }
+            @if (recentInquiries.length === 0) {
+            <tr>
+                <td colspan="4" class="empty-state">No inquiries yet.</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
